@@ -1,0 +1,97 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useAuthStore } from "../store/authUser";
+
+const SignupPage = () => {
+  const { searchParams } = new URL(document.location);
+  const emailValue = searchParams.get("email");
+  const [email, setEmail] = useState("" || emailValue);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const { signup } = useAuthStore();
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    signup({ email, username, password });
+  };
+  return (
+    <>
+      <div className="h-screen relative bg-linear-to-b from-black/90 via-black/25 to-transparent">
+        <img
+          className="absolute top-0 left-0 h-full w-full object-cover -z-10"
+          src="/assets/hero.png"
+          alt="hero-img"
+        />
+        {/* Header-start */}
+        <header className=" px-5  pt-5 max-w-6xl md:mx-auto">
+          <img className="w-44" src="/assets/netflix-logo.png" alt="logo-img" />
+        </header>
+        {/* Header-end */}
+
+        {/* Signup-start */}
+        <div className="w-full h-[85%] flex justify-center items-center ">
+          <div className=" h-fit flex flex-col items-center  py-10 px-4 sm:p-10 bg-black/80  text-white rounded-2xl">
+            <h1 className="text-3xl font-bold pb-4">Sign Up</h1>
+            <form className="space-y-5" onSubmit={handleFormSubmit}>
+              <div>
+                <label htmlFor="email">Email</label>
+                <br />
+                <input
+                  className="pl-2 mt-1 h-[2.5em] w-[20em]  border-[0.02em] border-gray-600 outline-none rounded-md"
+                  type="text"
+                  id="email"
+                  placeholder="you@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <br />
+              </div>
+              <div>
+                <label htmlFor="name">Username</label>
+                <br />
+                <input
+                  className="pl-2 mt-1 h-[2.5em] w-[20em]  border-[0.02em] border-gray-600 outline-none rounded-md"
+                  type="text"
+                  id="name"
+                  placeholder="moustafa"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+                <br />
+              </div>
+
+              <div>
+                <label htmlFor="password">Password</label>
+                <br />
+                <input
+                  className="pl-2 mt-1 h-[2.5em] w-[20em]  border-[0.02em] border-gray-600 outline-none rounded-md"
+                  type="password"
+                  id="password"
+                  placeholder="***********"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <br />
+              </div>
+
+              <button
+                className=" h-[2.5em] w-[20em] bg-red-600 text-center 
+              cursor-pointer
+              rounded-md "
+              >
+                Sign Up
+              </button>
+              <h3 className="text-center">
+                Already a member ?{" "}
+                <Link className="text-red-600" to={"/login"}>
+                  sign in
+                </Link>
+              </h3>
+            </form>
+          </div>
+        </div>
+        {/* Signup-end */}
+      </div>
+    </>
+  );
+};
+export default SignupPage;
