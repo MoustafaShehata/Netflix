@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../../store/userAuth";
+import { MoveLeftIcon } from "lucide-react";
 
 const VerifyEmailPage = () => {
   const [verificationCodeBtns, setverificationCodeBtns] = useState(
@@ -104,6 +105,11 @@ const VerifyEmailPage = () => {
             >
               {isVerifingEmail ? "verifingEmail" : "Verify Email"}
             </button>
+
+            <div className="text-center space-x-2">
+              <MoveLeftIcon className="inline" size={15} />{" "}
+              <Link to={"/signup"}>Back to signup</Link>
+            </div>
           </form>
         </div>
       </div>
