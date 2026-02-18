@@ -163,7 +163,7 @@ This project is a full-stack Netflix clone, featuring a React frontend and a Nod
 ### Application Setup
 
 1. fill a `.env` file in `Netflix/.env` with the following:
-   ```
+  ```
   PORT =8000
   JWT_SECRET= # your JWT_SECRET
   NODE_ENV=development
@@ -171,6 +171,7 @@ This project is a full-stack Netflix clone, featuring a React frontend and a Nod
   MAILTRAP_API_TOKEN= # get Token from https://mailtrap.io/pricing/?tab=email-api
   TMDB_API_TOKEN= # get Token From https://www.themoviedb.org
   CLIENT_URL=http://localhost:8000
+
    ```
 2. Make sure you are open Netflix folder in your terminal
 
@@ -186,4 +187,5 @@ This project is a full-stack Netflix clone, featuring a React frontend and a Nod
 ## License
 
 This project is for educational purposes only and is not affiliated with Netflix.
+
 
