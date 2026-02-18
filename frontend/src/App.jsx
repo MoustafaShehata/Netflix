@@ -38,7 +38,15 @@ const App = () => {
 
         <Route
           path="/signup"
-          element={!user ? <SignupPage /> : <Navigate to={"/"} />}
+          element={
+            !user ? (
+              <SignupPage />
+            ) : !user.isVerified ? (
+              <SignupPage />
+            ) : (
+              <Navigate to={"/"} />
+            )
+          }
         />
         <Route
           path="/verifyemail"
@@ -48,21 +56,53 @@ const App = () => {
         />
         <Route
           path="/login"
-          element={!user ? <LoginPage /> : <Navigate to={"/"} />}
+          element={
+            !user ? (
+              <LoginPage />
+            ) : !user.isVerified ? (
+              <Navigate to={"/verifyemail"} />
+            ) : (
+              <Navigate to={"/"} />
+            )
+          }
         />
-        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-        <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
+        <Route
+          path="/forgot-password"
+          element={
+            user?.isVerified ? (
+              <ForgotPasswordPage />
+            ) : (
+              <Navigate to={"/verifyemail"} />
+            )
+          }
+        />
+        <Route
+          path="/reset-password/:token"
+          element={
+            user?.isVerified ? (
+              <ResetPasswordPage />
+            ) : (
+              <Navigate to={"/verifyemail"} />
+            )
+          }
+        />
         <Route
           path="/movie-details"
-          element={user ? <MovieDetailsPage /> : <Navigate to={"/login"} />}
+          element={
+            user?.isVerified ? <MovieDetailsPage /> : <Navigate to={"/login"} />
+          }
         />
         <Route
           path="/history"
-          element={user ? <HistoryPage /> : <Navigate to={"/login"} />}
+          element={
+            user?.isVerified ? <HistoryPage /> : <Navigate to={"/login"} />
+          }
         />
         <Route
           path="/search"
-          element={user ? <SearchPage /> : <Navigate to={"/login"} />}
+          element={
+            user?.isVerified ? <SearchPage /> : <Navigate to={"/login"} />
+          }
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
