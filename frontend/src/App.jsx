@@ -66,26 +66,8 @@ const App = () => {
             )
           }
         />
-        <Route
-          path="/forgot-password"
-          element={
-            user?.isVerified ? (
-              <ForgotPasswordPage />
-            ) : (
-              <Navigate to={"/verifyemail"} />
-            )
-          }
-        />
-        <Route
-          path="/reset-password/:token"
-          element={
-            user?.isVerified ? (
-              <ResetPasswordPage />
-            ) : (
-              <Navigate to={"/verifyemail"} />
-            )
-          }
-        />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
         <Route
           path="/movie-details"
           element={
