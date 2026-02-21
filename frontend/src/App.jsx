@@ -41,7 +41,7 @@ const App = () => {
           element={
             !user ? (
               <SignupPage />
-            ) : !user.isVerified ? (
+            ) : !user?.isVerified ? (
               <SignupPage />
             ) : (
               <Navigate to={"/"} />
@@ -59,7 +59,7 @@ const App = () => {
           element={
             !user ? (
               <LoginPage />
-            ) : !user.isVerified ? (
+            ) : !user?.isVerified ? (
               <Navigate to={"/verifyemail"} />
             ) : (
               <Navigate to={"/"} />
